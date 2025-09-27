@@ -184,20 +184,20 @@ Note how the data are laid out: each variable is in a column and each row repres
 
 ## `r bmu()` Visualizing the data [(1)]{.alt}
 
-We can visualise the data easily using the `GGally` package, which we met in `discovr_07`. When you want to plot continuous variables, the `ggscatmat()` function from this package produces a matrix of scatterplots (below the diagonal), distributions (along the diagonal) and the correlation coefficient (above the diagonal). It takes the general form:
+We can visualise the data easily using the `GGally` package, which we met in `discovr_07`. When you want to plot continuous variables, the `ggpairs()` function from this package produces a matrix of scatterplots (below the diagonal), distributions (along the diagonal) and the correlation coefficient (above the diagonal). It takes the general form:
 
 ```{r, eval = FALSE}
-GGally::ggscatmat(my_tibble, columns = c("variable 1", " variable 2", " variable 3" …))
+GGally::ggpairs(my_tibble, columns = c("variable 1", " variable 2", " variable 3" …))
 ```
 
 Basically, you feed in the name of the tibble containing the variables, and use the columns argument to name the variables that you want to plot.
 
-#### `r robot()` Code example for `ggscatmat()`
+#### `r robot()` Code example for `ggpairs()`
 
 This code will plot all of the variables in the data:
 
 ```{r album_plot_code, exercise = TRUE, exercise.lines = 2}
-GGally::ggscatmat(album_tib, columns = c("sales", "adverts", "airplay", "image"))
+GGally::ggpairs(album_tib, columns = c("sales", "adverts", "airplay", "image"))
 ```
 
 <div class="tip">
@@ -226,7 +226,7 @@ columns = c("adverts", "airplay", "image", "sales")
 
 ```{r album_plot-hint-3}
 # solution
-GGally::ggscatmat(album_tib, columns = c("adverts", "airplay", "image", "sales")) +
+GGally::ggpairs(album_tib, columns = c("adverts", "airplay", "image", "sales")) +
   theme_minimal()
 ```
 

@@ -1,6 +1,6 @@
 ---
 title: "discovr: Associations"
-author: "Andy Field"
+author: "Andy Field, Alan Cobo-Lewis"
 output:
   learnr::tutorial:
     progressive: false
@@ -183,14 +183,14 @@ These data are preloaded in this tutorial in a tibble called [exam_tib]{.alt}. U
 exam_tib
 ```
 
-Note there are five variables: the participant **id**, the hours spent revising (**revise**), their **exam_grade**, their exam **anxiety**, and their biological **sex**. We can visualise the data easily using the `GGally` package. When you want to plot continuous variables, the `ggscatmat()` function from this package produces a matrix of scatterplots (below the diagonal), distributions (along the diagonal) and the correlation coefficient (above the diagonal). 
+Note there are five variables: the participant **id**, the hours spent revising (**revise**), their **exam_grade**, their exam **anxiety**, and their biological **sex**. We can visualise the data easily using the `GGally` package. The `ggpairs()` function from this package produces a matrix of scatterplots (below the diagonal), distributions (along the diagonal) and the correlation coefficient (above the diagonal). (For non-numeric variables, `ggpairs()` selects appropriate alternatives to scatterplots.)
 
 #### `r robot()` Code example
 
-The `ggscatmat()` function takes the general form:
+The `ggpairs()` function takes the general form:
 
 ```{r, eval = FALSE}
-GGally::ggscatmat(my_tibble, columns = c("variable 1", " variable 2", " variable 3" …))
+GGally::ggpairs(my_tibble, columns = c("variable 1", " variable 2", " variable 3" …))
 ```
 
 Basically, you feed in the name of the tibble containing the variables, and use the columns argument to name the variables that you want to plot.
@@ -204,7 +204,7 @@ For example, to plot the variables called **exam_grade**, **revise**, and **anxi
 ```
 
 ```{r exam_plot-solution}
-GGally::ggscatmat(exam_tib, columns = c("exam_grade", "revise", "anxiety"))
+GGally::ggpairs(exam_tib, columns = c("exam_grade", "revise", "anxiety"))
 ```
 
 
@@ -217,7 +217,7 @@ Like other plots we have done, we can also apply a `ggplot2` theme in the usual 
 ```
 
 ```{r exam_plot2-solution}
-GGally::ggscatmat(exam_tib, columns = c("exam_grade", "revise", "anxiety")) +
+GGally::ggpairs(exam_tib, columns = c("exam_grade", "revise", "anxiety")) +
   theme_minimal()
 ```
 
@@ -443,21 +443,21 @@ The main variables are in two columns: one labelled **creativity** and one label
 
 #### `r alien()` Alien coding challenge
 
-Plot **creativity** against **position** using `ggscatmat()`
+Plot **creativity** against **position** using `ggpairs()`
 
 ```{r create_plot, exercise = TRUE, exercise.lines = 4}
 
 ```
 
 ```{r create_plot-hint-1}
-# Use the GGally::ggscatmat() function (replace the xs)
+# Use the GGally::ggpairs() function (replace the xs)
 
-GGally::ggscatmat(xxxxxx, columns = c("xxxxxx", "xxxxxx"))
+GGally::ggpairs(xxxxxx, columns = c("xxxxxx", "xxxxxx"))
 ```
 
 ```{r create_plot-hint-2}
 # This will get you the plot:
-GGally::ggscatmat(liar_tib, columns = c("creativity", "position"))
+GGally::ggpairs(liar_tib, columns = c("creativity", "position"))
 
 # Now add a theme
 ```
@@ -465,7 +465,7 @@ GGally::ggscatmat(liar_tib, columns = c("creativity", "position"))
 ```{r create_plot-hint-3}
 # The plot with theme_minimal() applied
 
-GGally::ggscatmat(liar_tib, columns = c("creativity", "position")) +
+GGally::ggpairs(liar_tib, columns = c("creativity", "position")) +
   theme_minimal()
 ```
 
